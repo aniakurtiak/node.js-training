@@ -1,9 +1,6 @@
 import { program } from "commander";
 import * as contactService from "./contacts.js";
 
-// const { Command } = require("commander");
-// const program = new Command();
-
 async function invokeAction({ action, contactId, name, email, phone }) {
   switch (action) {
     case "list":
