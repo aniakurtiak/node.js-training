@@ -1,17 +1,8 @@
+import { program } from "commander";
 import * as contactService from "./contacts.js";
 
-const { Command } = require("commander");
-const program = new Command();
-program
-  .option("-a, --action <type>", "choose action")
-  .option("-i, --contactId <type>", "user id")
-  .option("-n, --name <type>", "user name")
-  .option("-e, --email <type>", "user email")
-  .option("-p, --phone <type>", "user phone");
-
-program.parse(process.argv);
-
-const argv = program.opts();
+// const { Command } = require("commander");
+// const program = new Command();
 
 async function invokeAction({ action, contactId, name, email, phone }) {
   switch (action) {
@@ -36,4 +27,14 @@ async function invokeAction({ action, contactId, name, email, phone }) {
   }
 }
 
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --contactId <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse();
+
+const argv = program.opts();
 invokeAction(argv);
